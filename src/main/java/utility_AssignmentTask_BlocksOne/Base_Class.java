@@ -18,7 +18,8 @@ public class Base_Class {
 	{
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--remote-allow-origins=*");
+//		options.addArguments("--remote-allow-origins=*");
+		options.addArguments("--incognito"); // Open Chrome in incognito mode
 		driver = new ChromeDriver(options);
 //		driver.get("https://chromewebstore.google.com/");
 //		driver.get("https://www.amazon.in/");

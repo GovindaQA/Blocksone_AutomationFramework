@@ -16,27 +16,31 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Meta_BaseClass {
 	public WebDriver driver;
+	public ChromeOptions options;
 	@BeforeMethod
 	public void start_Browser()
 	{
 		WebDriverManager.chromedriver().setup();
 		/**---Make the metamask path dynamic so it can be run on remote machine-----*/
 		String metaMaskExtensionPath = "./Files/MetaMask - Chrome Web Store 11.16.14.0.crx";
-		ChromeOptions options = new ChromeOptions();
+		options = new ChromeOptions();
+		//		 options.addArguments("--disable-extensions");
+		//       Enable only the desired extension by specifying the unpacked extension folder
+		//	    options.addArguments("--load-extension=" +metaMaskExtensionPath);
 		options.addArguments("--remote-allow-origins=*");
 		options.addExtensions(new File(metaMaskExtensionPath));
 		driver = new ChromeDriver(options);
 		driver.get("chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#onboarding/welcome");
 		driver.manage().window().maximize();
-//		https://l1xapp.com/
-//		
-		
-		
+		//		https://l1xapp.com/
+		//		
+
+
 	}
 	@AfterMethod
 	public void tearDown()
 	{
-//		driver.quit();
+		//		driver.quit();
 	}
 
 }
