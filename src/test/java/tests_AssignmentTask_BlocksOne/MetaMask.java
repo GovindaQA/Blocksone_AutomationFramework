@@ -1,5 +1,6 @@
 package tests_AssignmentTask_BlocksOne;
 
+import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
@@ -41,11 +42,13 @@ public class MetaMask extends Meta_BaseClass
 	@Test
 	public void openChromeExtension() throws IOException, InterruptedException
 	{
+		
+
+	
 		meta = PageFactory.initElements(driver, MetaMask_POM.class);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(0));
-//		driver.switchTo().window(tabs.get(1));
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getCheckboxonboardingterms())).click();
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getBtn_Create_a_new_wallet())).click();
 		//		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
@@ -53,10 +56,12 @@ public class MetaMask extends Meta_BaseClass
 		//		driver.close();
 
 		/** ----Help Us Improve MetaMask----*/
+		
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getCheckbox_metametrics_opt_in())).click();
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getBtn_IAgree())).click();
 
 		/** ----Create Password Page----*/
+		
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getTxt_NewPassowrd())).sendKeys("Metauser@2024");
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getTxt_ConfirmPassowrd())).sendKeys("Metauser@2024");
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getCheckbox_IUndeerstand_MetaMask())).click();
@@ -72,10 +77,30 @@ public class MetaMask extends Meta_BaseClass
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getBtn_Done())).click();
 		wait.until(ExpectedConditions.elementToBeClickable(meta.getBtn_Enable())).click();
 		driver.navigate().to("https://l1xapp.com/");
+	    Set<String> Windows = driver.getWindowHandles();
+	    
+
+	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//abbr[text()='Connect']"))).click();
 		
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//abbr[text()='Connect']"))).click();
+/**	String parent=driver.getWindowHandle();
+		driver.close();
+       Set<String> Windows = driver.getWindowHandles();
+        
+        for(String c:childWindow)
+        {
+        	if(!c.equals(parent))
+        	{
+        		driver.switchTo().window(c);
+        	}
+        }
+       
+		
+//		driver.findElement(By.xpath("//div[@class='popover-container']//descendant::button//span")).click();
+/**
+	
 		Thread.sleep(20000);
         String parentWindow = driver.getWindowHandle();
+        System.out.println(parentWindow);
 
         Set<String> childWindow = driver.getWindowHandles();
 
@@ -84,12 +109,17 @@ public class MetaMask extends Meta_BaseClass
                 driver.switchTo().window(handle);
                 
                 System.out.println("Switched to new window: " + driver.getTitle());
+                Thread.sleep(3000);
                 System.out.println(driver.getCurrentUrl()+": "+driver.getPageSource());
-//                WebElement web = driver.findElement(By.xpath("//button[text()='Next']"));
-//                wait.until(ExpectedConditions.elementToBeClickable(web)).click();
-//                
-//                driver.close();
+                WebElement web = driver.findElement(By.xpath("//button[text()='Next']"));
+                wait.until(ExpectedConditions.elementToBeClickable(web)).click();
+              
             }
+           
+//            System.out.println(driver.getWindowHandle());
+//            System.out.println(driver.getCurrentUrl());
+//           System.out.println(driver.getTitle());
+
 //          driver.close(); 
 //          WebElement web = driver.findElement(By.xpath("//button[text()='Next']"));
 //          wait.until(ExpectedConditions.elementToBeClickable(web)).click();

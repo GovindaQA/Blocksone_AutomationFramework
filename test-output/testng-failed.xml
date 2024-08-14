@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests_AssignmentTask_BlocksOne.MetaMask">
+      <class name="tests_AssignmentTask_BlocksOne.TrialAndError">
         <methods>
+          <include name="verify_window"/>
           <include name="start_Browser"/>
           <include name="tearDown"/>
-          <include name="openChromeExtension"/>
         </methods>
-      </class> <!-- tests_AssignmentTask_BlocksOne.MetaMask -->
+      </class> <!-- tests_AssignmentTask_BlocksOne.TrialAndError -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
